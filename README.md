@@ -7,4 +7,4 @@
 - Revenue calculation didn't take the timezone into account. Even though the
   function's not used now, could lead to bugs in the future, so noted and fixed
   it.
-- Decimals were dropped when serving to frontend.
+- Decimals were dropped when serving to frontend

@@ -12,14 +12,13 @@ async def get_dashboard_summary(
 ) -> Dict[str, Any]:
     
     tenant_id = getattr(current_user, "tenant_id", "default_tenant") or "default_tenant"
-    
+
     revenue_data = await get_revenue_summary(property_id, tenant_id)
-    
-    total_revenue_float = float(revenue_data['total'])
-    
+
+    # Keep the Decimal precision intact by sending the value as a string.
     return {
         "property_id": revenue_data['property_id'],
-        "total_revenue": total_revenue_float,
+        "total_revenue": revenue_data['total'],
         "currency": revenue_data['currency'],
         "reservations_count": revenue_data['count']
     }
